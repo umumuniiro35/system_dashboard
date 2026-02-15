@@ -718,4 +718,88 @@ transform:scale(1.05);
     margin-right: 0;
     border-radius: 0;
   }
+
+}
+
+
+
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px){
+
+  /* Sidebar becomes top bar */
+  .sidebar{
+    width:100%;
+    height:auto;
+    position:relative;
+    box-shadow:none;
+    text-align:center;
+  }
+
+  .sidebar h2{
+    padding:15px 0;
+    font-size:20px;
+  }
+
+  .menu a{
+    padding:10px;
+    border-left:none;
+  }
+
+  .logout{
+    position:relative;
+    bottom:auto;
+    left:auto;
+    transform:none;
+    margin:15px auto;
+    display:inline-block;
+  }
+
+  /* Main full width */
+  .main{
+    margin-left:0;
+    width:100%;
+    padding:15px;
+  }
+
+  /* Header stack */
+  .header{
+    flex-direction:column;
+    text-align:center;
+    gap:15px;
+  }
+
+  /* Cards stack */
+  .card-container{
+    flex-direction:column;
+  }
+
+  /* Tables scrollable */
+  #R4, #i7, #Bok6 table, #Cu4 table{
+    display:block;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+
+  /* Booking & Customer sections full width */
+  #Bok1, #Cu1{
+    margin-left:0;
+    margin-right:0;
+    border-radius:0;
+  }
+
+  /* Login box smaller */
+  #nm1 #m02{
+    width:90%;
+    padding:30px 20px;
+  }
+
+  /* Inputs */
+  input, select, textarea{
+    font-size:14px;
+  }
+
+  button{
+    font-size:14px;
+  }
 }
