@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maria Travel Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>Maria Travel</h2>
+    <div class="menu">
+      <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+      <a href="booking.html"><i class="fas fa-plane"></i> Booking</a>
+      <a href="customers.html"><i class="fas fa-users"></i> Customers</a>
+      <a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a>
+      <a href="countries.html"><i class="fas fa-globe"></i> Countries</a>
+    </div>
+    <div class="logout">
+      <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </div>
+
+<div class="main" id="R1">
+
+<section id="R2">
+
+<h2 id="R3"> Travel Report Table</h2>
+
+<table id="R4">
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Country</th>
+<th>City</th>
+<th>Fee</th>
+<th>Location</th>
+</tr>
+</thead>
+
+<tbody id="R5">
+<tr onclick="showPerson(this)">
+<td>1</td><td>  Maryama shariif</td><td>Turkey</td><td>Istanbul</td><td>$900</td><td>Europe</td>
+</tr>
+
+<tr onclick="showPerson(this)">
+<td>2</td><td>Anas ali</td><td>Qatar</td><td>Doha</td><td>$700</td><td>Middle East</td>
+</tr>
+
+<tr onclick="showPerson(this)">
+<td>3</td><td>Halima Abdi</td><td>UAE</td><td>Dubai</td><td>$850</td><td>Middle East</td>
+</tr>
+
+<tr onclick="showPerson(this)">
+<td>4</td><td>Ruweydo Ali</td><td>Malaysia</td><td>Kuala Lumpur</td><td>$1000</td><td>Asia</td>
+</tr>
+
+<tr onclick="showPerson(this)">
+<td>5</td><td>Sumayo Omar</td><td>UK</td><td>London</td><td>$950</td><td>Europe</td>
+</tr>
+
+<tr onclick="showPerson(this)">
+<td>6</td><td>Zaynab Shariif</td><td>France</td><td>Paris</td><td>$1100</td><td>Europe</td>
+</tr>
+
+<tr onclick="showPerson(this)">
+<td>7</td><td>Ahmed Yusuf</td><td>USA</td><td>New York</td><td>$1200</td><td>America</td>
+</tr>
+
+<tr onclick="showPerson(this)">
+<td>8</td><td>Sarah Noor</td><td>Germany</td><td>Berlin</td><td>$800</td><td>Europe</td>
+</tr>
+
+<tr onclick="showPerson(this)">
+<td>9</td><td>Abdi Mohamed</td><td>Italy</td><td>Rome</td><td>$900</td><td>Europe</td>
+</tr>
+
+<tr onclick="showPerson(this)">
+<td>10</td><td>Layla Hassan</td><td>Canada</td><td>Toronto</td><td>$1150</td><td>America</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</div>
+
+<script>
+function showPerson(row){
+    let cells = row.getElementsByTagName("td");
+    alert(` Name: ${cells[1].textContent}\n Country: ${cells[2].textContent}\n City: ${cells[3].textContent}\n Fee: ${cells[4].textContent}\n Location: ${cells[5].textContent}`);
+}
+
+
+const rows = document.querySelectorAll("#R5 tr");
+rows.forEach(r=>{
+    r.addEventListener("mouseenter",()=> r.style.background="#f0f8ff");
+    r.addEventListener("mouseleave",()=> r.style.background="white");
+});
+</script>
+
+</div>
+</div>
+
+</body>
+</html>

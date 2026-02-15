@@ -1,0 +1,721 @@
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI', sans-serif;
+}
+
+body{
+background:#f4f6fb;
+color:#333;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar{
+width:250px;
+height:100vh;
+background:linear-gradient(180deg,#1e3c72,#2a5298);
+position:fixed;
+color:white;
+box-shadow:5px 0 20px rgba(0,0,0,0.3);
+transition:0.4s;
+}
+
+.sidebar h2{
+text-align:center;
+padding:25px 0;
+font-size:24px;
+letter-spacing:1px;
+text-shadow:2px 2px 6px black;
+}
+
+.menu{
+margin-top:20px;
+}
+
+.menu a{
+display:block;
+padding:12px 25px;
+color:white;
+text-decoration:none;
+transition:0.3s;
+border-left:4px solid transparent;
+border-radius:8px;
+}
+
+.menu a:hover{
+background:rgba(255,255,255,0.15);
+border-left:4px solid white;
+padding-left:30px;
+}
+
+/* LOGOUT BUTTON */
+.logout{
+position:absolute;
+bottom:25px;
+left:50%;
+transform:translateX(-50%);
+background:#ff4d4d;
+padding:8px 25px;
+border-radius:30px;
+box-shadow:0 8px 20px rgba(0,0,0,0.4);
+transition:0.3s;
+}
+
+.logout a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.logout:hover{
+background:#e03e3e;
+transform:scale(1.05);
+}
+
+/* ================= MAIN CONTENT ================= */
+.main{
+margin-left:250px;
+padding:30px;
+width:calc(100% - 250px);
+}
+
+/* ================= HEADER ================= */
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 30px;
+background:linear-gradient(135deg,#2a5298,#1e3c72);
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+margin-bottom:30px;
+color:white;
+}
+
+.header h1{
+font-size:28px;
+text-shadow:3px 3px 10px rgba(0,0,0,0.3);
+}
+
+.header img{
+width:60px;
+height:60px;
+border-radius:50%;
+box-shadow:0 8px 20px rgba(0,0,0,0.5);
+animation:float 3s ease-in-out infinite;
+}
+
+/* ================= DASHBOARD CARDS ================= */
+.card-container{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+flex:1 1 220px;
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,0.2);
+text-align:center;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 25px 50px rgba(0,0,0,0.3);
+}
+
+.card h3{
+color:#2a5298;
+margin-bottom:10px;
+text-shadow:2px 2px 6px rgba(0,0,0,0.2);
+}
+
+/* ================= TABLE ================= */
+#R1 {
+  padding:25px;
+  font-family:'Segoe UI', sans-serif;
+  background:linear-gradient(135deg,#f9f9f9,#e0f0ff);
+  min-height:100vh;
+}
+
+#R2 {
+  max-width:1100px;
+  margin:0 auto;
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+#R3 {
+  text-align:center;
+  color:#2a5298;
+  text-shadow:2px 2px 6px rgba(0,0,0,0.2);
+  margin-bottom:25px;
+}
+
+#R4 {
+  width:100%;
+  border-collapse:collapse;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+#R4 th, #R4 td {
+  border:1px solid #ccc;
+  padding:12px 15px;
+  text-align:center;
+}
+
+#R4 th {
+  background:#2a5298;
+  color:white;
+  font-size:16px;
+  text-shadow:1px 1px 3px rgba(0,0,0,0.3);
+}
+
+#R4 tr:hover td {
+  background:#d9ebff;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+/* ================= FORMS ================= */
+input, select, textarea{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border-radius:12px;
+border:1px solid #ccc;
+outline:none;
+transition:0.3s;
+box-shadow:inset 0 2px 6px rgba(0,0,0,0.08);
+}
+
+input:focus, select:focus, textarea:focus{
+border-color:#2a5298;
+box-shadow:0 0 12px rgba(42,82,152,0.3);
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:12px;
+background:#2a5298;
+color:white;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+button:hover{
+background:#1e3c72;
+transform:scale(1.05);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-5px);}
+100%{transform:translateY(0);}
+}
+
+
+
+/* ================== BODY ================== */
+#nm1 {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  background: linear-gradient(135deg,#2a5298,#1e3c72);
+  font-family:'Segoe UI', sans-serif;
+}
+
+/* ================== LOGIN BOX ================== */
+#nm1 #m02 {
+  background:white;
+  padding:40px 30px;
+  border-radius:25px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.3);
+  width:350px;
+  text-align:center;
+  position:relative;
+}
+
+/* ================== TITLE ================== */
+#m03 {
+  color:#2a5298;
+  margin-bottom:25px;
+  font-size:28px;
+  text-shadow:2px 2px 8px rgba(0,0,0,0.2);
+}
+
+/* ================== INPUT GROUP ================== */
+#nm1 .input-group {
+  position:relative;
+  margin-bottom:25px;
+}
+
+#nm1 .input-group i {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  color:#2a5298;
+  font-size:18px;
+}
+
+#nm1 .input-group input {
+  width:100%;
+  padding:12px 40px; /* padding-right for eye icon */
+  border-radius:15px;
+  border:1px solid #ccc;
+  outline:none;
+  transition:0.3s;
+  font-size:16px;
+}
+
+#nm1 .input-group input:focus {
+  border-color:#2a5298;
+  box-shadow:0 0 10px rgba(42,82,152,0.4);
+}
+
+/* ================== LEFT ICON ================== */
+#nm1 .input-group i.fa-user,
+#nm1 .input-group i.fa-key {
+  left:10px;
+}
+
+/* ================== SHOW PASSWORD ICON ================== */
+#nm1 .show-pass {
+  position:absolute;
+  top:50%;
+  right:15px; /* 15px from right edge */
+  transform:translateY(-50%);
+  cursor:pointer;
+  color:#2a5298;
+  font-size:18px;
+  transition:0.3s;
+}
+
+#nm1 .show-pass:hover {
+  color:#ff4d4d;
+  transform:translateY(-50%) scale(1.2);
+}
+
+/* ================== LOGIN BUTTON ================== */
+#m09 {
+  width:100%;
+  padding:12px;
+  background:#2a5298;
+  color:white;
+  border:none;
+  border-radius:15px;
+  font-size:18px;
+  cursor:pointer;
+  box-shadow:0 10px 20px rgba(0,0,0,0.3);
+  transition:0.4s;
+}
+
+#m09:hover {
+  background:#1e3c72;
+  transform:translateY(-3px);
+  box-shadow:0 15px 25px rgba(0,0,0,0.4);
+}
+
+/* ================== MESSAGE ================== */
+#m10 {
+  margin-top:15px;
+  font-size:16px;
+}
+
+/* ================== ANIMATION ================== */
+@keyframes float {
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-5px);}
+  100%{transform:translateY(0);}
+}
+
+
+
+#i1 {
+  padding:20px;
+  font-family:'Segoe UI', sans-serif;
+  background:linear-gradient(135deg,#f2f2f2,#e6f0ff);
+  min-height:100vh;
+}
+
+#i2 {
+  max-width:1200px;
+  margin:0 auto;
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+#i3 {
+  text-align:center;
+  color:#2a5298;
+  text-shadow:2px 2px 5px rgba(0,0,0,0.2);
+  margin-bottom:20px;
+}
+
+#i4 {
+  display:flex;
+  justify-content:center;
+  margin-bottom:25px;
+  gap:10px;
+}
+
+#i5 {
+  padding:10px 15px;
+  width:250px;
+  border-radius:12px;
+  border:1px solid #ccc;
+  font-size:16px;
+  outline:none;
+  transition:0.3s;
+}
+
+#i5:focus {
+  border-color:#2a5298;
+  box-shadow:0 0 10px rgba(42,82,152,0.3);
+}
+
+#i6 {
+  padding:10px 20px;
+  border:none;
+  background:#2a5298;
+  color:white;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+#i6:hover {
+  background:#1e3c72;
+  transform:translateY(-2px);
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+#i7 {
+  width:100%;
+  border-collapse:collapse;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+#i7 th, #i7 td {
+  border:1px solid #ccc;
+  padding:12px 15px;
+  text-align:center;
+}
+
+#i7 th {
+  background:#2a5298;
+  color:white;
+  font-size:16px;
+  text-shadow:1px 1px 3px rgba(0,0,0,0.3);
+}
+
+#i7 tr:hover td {
+  background:#d9ebff;
+  transition:0.3s;
+}
+
+
+
+/* =========================
+   MAIN BOOKING SECTION
+========================= */
+
+#Bok1 {
+  margin-left: 250px;  
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  padding: 30px;
+
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #fdfdfd, #e6f0ff);
+
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+  min-height: 100vh;
+}
+
+/* =========================
+   HEADING
+========================= */
+
+#Bok2 h2 {
+  text-align: center;
+  color: #2a5298;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+/* =========================
+   INPUTS & SELECT
+========================= */
+
+#Bok3 input[type="text"],
+#Bok3 select {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+
+  border: 1px solid #ccc;
+  border-radius: 12px;
+
+  font-size: 16px;
+
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+#Bok3 input[type="text"]:focus,
+#Bok3 select:focus {
+  border-color: #2a5298;
+  box-shadow: 0 0 12px rgba(42,82,152,0.3);
+  outline: none;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+#Bok3 button {
+  display: block;
+  width: 180px;
+  margin: 20px auto;
+
+  background: #2a5298;
+  color: white;
+
+  padding: 14px;
+  font-size: 16px;
+
+  border: none;
+  border-radius: 12px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#Bok3 button:hover {
+  background: #1f3f7a;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+/* =========================
+   LIVE PREVIEW
+========================= */
+
+#Bok5 h3 {
+  text-align: center;
+  margin: 20px 0 30px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+/* =========================
+   TABLE SECTION
+========================= */
+
+#Bok6 {
+  overflow-x: auto;
+}
+
+#Bok6 table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+
+#Bok6 th,
+#Bok6 td {
+  padding: 14px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+#Bok6 th {
+  background: #2a5298;
+  color: white;
+  font-size: 16px;
+}
+
+#Bok6 tbody tr:hover {
+  background: #e6f2ff;
+  transition: 0.3s;
+}
+
+/* Delete Button */
+
+#Bok6 td button {
+  background: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#Bok6 td button:hover {
+  background: #c0392b;
+  transform: scale(1.05);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+  #Bok1 {
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 0;
+  }
+}
+
+/* =========================
+   CUSTOMER SECTION
+========================= */
+
+#Cu1 {
+  margin-left: 250px; /* Sidebar width */
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  padding: 30px;
+  font-family: 'Segoe UI', sans-serif;
+
+  background: linear-gradient(135deg, #fdfdfd, #e6f0ff);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  min-height: 100vh;
+}
+
+/* Heading */
+#Cu2 h2 {
+  text-align: center;
+  color: #2a5298;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+/* Inputs & Select */
+#Cu3 input[type="text"], #Cu3 input[type="email"], #Cu3 select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+#Cu3 input:focus, #Cu3 select:focus {
+  border-color: #2a5298;
+  box-shadow: 0 0 10px rgba(42,82,152,0.3);
+  outline: none;
+}
+
+/* Button */
+#Cu3 button {
+  display: block;
+  width: 180px;
+  margin: 20px auto;
+  background: #2a5298;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#Cu3 button:hover {
+  background: #1f3f7a;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+}
+
+/* Customer Table */
+#Cu4 {
+  overflow-x: auto;
+}
+
+#Cu4 table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+
+#Cu4 th, #Cu4 td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-size: 15px;
+}
+
+#Cu4 th {
+  background: #2a5298;
+  color: white;
+  font-size: 16px;
+}
+
+#Cu4 td button {
+  background: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#Cu4 td button:hover {
+  background: #c0392b;
+  transform: scale(1.05);
+}
+
+/* Hover row */
+#Cu4 tbody tr:hover td {
+  background: #e6f2ff;
+  transition: 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 992px){
+  #Cu1 {
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 0;
+  }
+}

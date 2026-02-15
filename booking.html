@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maria Travel Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>Maria Travel</h2>
+    <div class="menu">
+      <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+      <a href="booking.html"><i class="fas fa-plane"></i> Booking</a>
+      <a href="customers.html"><i class="fas fa-users"></i> Customers</a>
+      <a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a>
+      <a href="countries.html"><i class="fas fa-globe"></i> Countries</a>
+    </div>
+    <div class="logout">
+      <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </div>
+
+<div class="main" id="Bok1">
+
+  <section id="Bok2">
+    <h2> New Booking</h2>
+  </section>
+
+  <div id="Bok3">
+    <input type="text" id="name" placeholder="Full Name" onkeyup="livePreview()">
+    <br><br>
+    <select id="country" onchange="livePreview()">
+      <option>Turkey</option>
+      <option>Qatar</option>
+      <option>UAE</option>
+      <option>Malaysia</option>
+      <option>UK</option>
+      <option>USA</option>
+    </select>
+    <br><br>
+    <input type="text" id="fee" placeholder="Fee $" onkeyup="calcTotal()">
+    <br><br>
+    <button onclick="addBooking()">Save Booking</button>
+  </div>
+
+  <div id="Bok5">
+    <h3 id="preview">Typing: ...</h3>
+  </div>
+
+  <div id="Bok6">
+    <h2>Booking List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Country</th>
+          <th>Fee</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="bookingTable"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+let bookings = [];
+let id = 1;
+
+
+const countryMinFee = {
+  "Turkey": 250,
+  "Qatar": 300,
+  "UAE": 350,
+  "Malaysia": 200,
+  "UK": 500,
+  "USA": 600
+};
+
+
+function livePreview(){
+  let name = document.getElementById("name").value;
+  let country = document.getElementById("country").value;
+  let fee = document.getElementById("fee").value;
+  document.getElementById("preview").innerHTML = `Typing: ${name} (${country}) - Fee: $${fee || 0}`;
+}
+
+
+function calcTotal(){
+  let feeInput = document.getElementById("fee").value;
+  if(feeInput && isNaN(feeInput)) {
+    alert("Fee must be a number!");
+    document.getElementById("fee").value = "";
+  }
+}
+
+
+function addBooking(){
+  let name = document.getElementById("name").value.trim();
+  let country = document.getElementById("country").value;
+  let fee = parseFloat(document.getElementById("fee").value);
+
+  if(!name || !fee){
+    alert("Please enter Name and Fee");
+    return;
+  }
+
+
+  let minFee = countryMinFee[country];
+  if(fee < minFee){
+    alert(`The fee for ${country} must be at least $${minFee}`);
+    return;
+  }
+
+  if(confirm("Are you sure to save booking.")){
+    bookings.push({id:id++, name, country, fee});
+    displayBookings();
+    animateNewBooking();
+    alert("Booking Added Successfully.");
+    document.getElementById("name").value = "";
+    document.getElementById("fee").value = "";
+    livePreview();
+  }
+}
+
+
+function displayBookings(){
+  let table = document.getElementById("bookingTable");
+  table.innerHTML = "";
+
+  bookings.forEach((b,index)=>{
+    table.innerHTML += `
+    <tr onmouseenter="this.style.background='#f0f8ff'" 
+        onmouseleave="this.style.background='white'" class="booking-row">
+      <td>${b.id}</td>
+      <td>${b.name}</td>
+      <td>${b.country}</td>
+      <td>$${b.fee}</td>
+      <td><button onclick="deleteBooking(${index})">Delete</button></td>
+    </tr>
+    `;
+  });
+}
+
+
+function deleteBooking(i){
+  bookings.splice(i,1);
+  displayBookings();
+}
+
+function animateNewBooking(){
+  const rows = document.querySelectorAll("#bookingTable tr");
+  if(rows.length > 0){
+    const lastRow = rows[rows.length - 1];
+    lastRow.style.background = "#d1ffd6"; 
+    lastRow.style.transition = "background 1s ease";
+    setTimeout(()=>{ lastRow.style.background = "white"; }, 1000);
+  }
+}
+
+</script>
+</body>
+</html>

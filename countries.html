@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maria Travel Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>Maria Travel</h2>
+    <div class="menu">
+      <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+      <a href="booking.html"><i class="fas fa-plane"></i> Booking</a>
+      <a href="customers.html"><i class="fas fa-users"></i> Customers</a>
+      <a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a>
+      <a href="countries.html"><i class="fas fa-globe"></i> Countries</a>
+    </div>
+    <div class="logout">
+      <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </div>
+<div class="main" id="i1">
+
+<section id="i2">
+
+<h2 id="i3">Available Travel Countries</h2>
+
+<div id="i4">
+<input type="text" id="i5" placeholder="Search country...">
+<button id="i6" onclick="searchCountry()">Search</button>
+</div>
+
+<table id="i7">
+<thead>
+<tr>
+<th>ID</th>
+<th>Country</th>
+<th>City</th>
+<th>Region</th>
+<th>Visa Fee</th>
+<th>Currency</th>
+<th>Status</th>
+<th>Date Added</th>
+</tr>
+</thead>
+
+<tbody id="i8">
+
+<tr>
+<td>1</td><td>Turkey</td><td>Istanbul</td><td>Europe</td><td>$250</td><td>Lira</td><td>Open</td><td>2026-02-14</td>
+</tr>
+
+<tr>
+<td>2</td><td>Qatar</td><td>Doha</td><td>Middle East</td><td>$300</td><td>Riyal</td><td>Open</td><td>2026-02-14</td>
+</tr>
+
+<tr>
+<td>3</td><td>UAE</td><td>Dubai</td><td>Middle East</td><td>$350</td><td>Dirham</td><td>Open</td><td>2026-02-14</td>
+</tr>
+
+<tr>
+<td>4</td><td>Malaysia</td><td>Kuala Lumpur</td><td>Asia</td><td>$200</td><td>Ringgit</td><td>Open</td><td>2026-02-14</td>
+</tr>
+
+<tr>
+<td>5</td><td>UK</td><td>London</td><td>Europe</td><td>$500</td><td>Pound</td><td>Limited</td><td>2026-02-14</td>
+</tr>
+
+<tr>
+<td>6</td><td>France</td><td>Paris</td><td>Europe</td><td>$450</td><td>Euro</td><td>Open</td><td>2026-02-14</td>
+</tr>
+
+<tr>
+<td>7</td><td>USA</td><td>New York</td><td>America</td><td>$600</td><td>Dollar</td><td>Limited</td><td>2026-02-14</td>
+</tr>
+
+<tr>
+<td>8</td><td>Germany</td><td>Berlin</td><td>Europe</td><td>$400</td><td>Euro</td><td>Open</td><td>2026-02-14</td>
+</tr>
+
+<tr>
+<td>9</td><td>Italy</td><td>Rome</td><td>Europe</td><td>$420</td><td>Euro</td><td>Open</td><td>2026-02-14</td>
+</tr>
+
+<tr>
+<td>10</td><td>Canada</td><td>Toronto</td><td>America</td><td>$550</td><td>Dollar</td><td>Open</td><td>2026-02-14</td>
+</tr>
+
+<tr>
+<td>11</td><td>India</td><td>Delhi</td><td>Asia</td><td>$180</td><td>Rupee</td><td>Open</td><td>2026-02-14</td>
+</tr>
+
+<tr>
+<td>12</td><td>Saudi Arabia</td><td>Riyadh</td><td>Middle East</td><td>$270</td><td>Riyal</td><td>Open</td><td>2026-02-14</td>
+</tr>
+
+</tbody>
+</table>
+
+</section>
+</div>
+
+<script>
+const allowedCountries = ["Turkey","Qatar","UAE","Malaysia","UK","France","USA","Germany","Italy","Canada","India","Saudi Arabia"];
+
+function searchCountry() {
+  let input = document.getElementById("i5").value.trim();
+  if(input === "") {
+    alert("Please enter a country!");
+    return;
+  }
+  if(input.toLowerCase() === "somalia" || !allowedCountries.some(c => c.toLowerCase() === input.toLowerCase())) {
+    alert("Country gaas lama soo xaryn");
+    return;
+  }
+
+  
+  let rows = document.querySelectorAll("#i8 tr");
+  let found=false;
+  rows.forEach(row=>{
+    row.style.background="white"; 
+    if(row.cells[1].textContent.toLowerCase() === input.toLowerCase()){
+      row.style.background="#cce5ff";
+      found=true;
+    }
+  });
+
+  if(found){
+    alert(" Country waa la xareeyay: " + input);
+  }
+}
+</script>
+
+</body>
+</html>

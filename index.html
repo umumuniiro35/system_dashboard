@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body id="nm1">
+
+<div class="login-box" id="m02">
+
+
+  <h2 id="m03"><i class="fa-solid fa-lock"></i> Maria Travel</h2>
+
+
+  <div class="input-group" id="m04">
+    <i class="fa fa-user"></i>
+    <input type="text" id="m05" placeholder="Username">
+  </div>
+
+
+  <div class="input-group" id="m06">
+    <i class="fa fa-key"></i>
+    <input type="password" id="m07" placeholder="Password">
+    <i class="fa fa-eye show-pass" id="m08" onclick="togglePass()"></i>
+  </div>
+
+ 
+  <button class="login-btn" id="m09" onclick="login()">Login</button>
+
+
+  <p id="m10"></p>
+
+</div>
+
+<script>
+// Show/Hide Password
+function togglePass(){
+  let p = document.getElementById("m07");
+  let eye = document.getElementById("m08");
+  if(p.type === "password"){
+    p.type = "text";
+    eye.classList.remove("fa-eye");
+    eye.classList.add("fa-eye-slash");
+  } else {
+    p.type = "password";
+    eye.classList.remove("fa-eye-slash");
+    eye.classList.add("fa-eye");
+  }
+}
+
+// Simple Login Logic
+function login(){
+  let u = document.getElementById("m05").value;
+  let p = document.getElementById("m07").value;
+  let msg = document.getElementById("m10");
+
+  if(u === "maria" && p === "855347"){
+    alert("Welcome Maryam");
+    window.location = "dashboard.html";
+  } else {
+    msg.innerHTML = "Wrong login";
+    msg.style.color = "red";
+    msg.style.fontWeight = "bold";
+  }
+}
+</script>
+
+</body>
+</html>

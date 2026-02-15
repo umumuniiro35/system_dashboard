@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maria Travel Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>Maria Travel</h2>
+    <div class="menu">
+      <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+      <a href="booking.html"><i class="fas fa-plane"></i> Booking</a>
+      <a href="customers.html"><i class="fas fa-users"></i> Customers</a>
+      <a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a>
+      <a href="countries.html"><i class="fas fa-globe"></i> Countries</a>
+    </div>
+    <div class="logout">
+      <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </div>
+
+<div class="main" id="Cu1">
+
+  <section id="Cu2">
+    <h2>Add Customer Booking</h2>
+  </section>
+
+  <div id="Cu3">
+    <input type="text" id="cname" placeholder="Full Name">
+    <br><br>
+
+    <select id="country" onchange="updateFeeCity()">
+      <option value="">Select Country</option>
+      <option value="Turkey">Turkey</option>
+      <option value="Qatar">Qatar</option>
+      <option value="UAE">UAE</option>
+      <option value="Malaysia">Malaysia</option>
+      <option value="UK">UK</option>
+      <option value="USA">USA</option>
+    </select>
+    <br><br>
+
+    <select id="city">
+      <option value="">Select City</option>
+    </select>
+    <br><br>
+
+    <input type="text" id="fee" placeholder="Fee $" readonly>
+    <br><br>
+
+    <button onclick="addCustomer()">Add Booking</button>
+  </div>
+
+  <div id="Cu4">
+    <h2>Customer Booking List</h2>
+    <table border="1" cellspacing="0" cellpadding="5">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Country</th>
+          <th>City</th>
+          <th>Fee</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody id="custTable"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+let customers = [];
+let cid = 1;
+
+const countryData = {
+  "Turkey": {cities:["Istanbul","Ankara"], fee: 1000},
+  "Qatar": {cities:["Doha"], fee: 3000},
+  "UAE": {cities:["Dubai","Abu Dhabi"], fee: 3500},
+  "Malaysia": {cities:["Kuala Lumpur","Penang"], fee: 2000},
+  "UK": {cities:["London","Manchester"], fee: 5200},
+  "USA": {cities:["New York","Los Angeles"], fee: 6400}
+};
+
+function updateFeeCity(){
+  let country = document.getElementById("country").value;
+  let citySelect = document.getElementById("city");
+  let feeInput = document.getElementById("fee");
+
+  // reset city and fee
+  citySelect.innerHTML = "<option value=''>Select City</option>";
+  feeInput.value = "";
+
+  if(countryData[country]){
+    countryData[country].cities.forEach(city=>{
+      let opt = document.createElement("option");
+      opt.value = city;
+      opt.textContent = city;
+      citySelect.appendChild(opt);
+    });
+    feeInput.value = countryData[country].fee;
+  } else if(country){
+    alert("Selected country is not allowed");
+    document.getElementById("country").value = "";
+  }
+}
+
+function addCustomer(){
+  let name = document.getElementById("cname").value.trim();
+  let country = document.getElementById("country").value;
+  let city = document.getElementById("city").value;
+  let fee = document.getElementById("fee").value;
+
+  if(!name || !country || !city || !fee){
+    alert("Please fill all fields");
+    return;
+  }
+
+  customers.push({id: cid++, name, country, city, fee});
+  displayCustomers();
+
+  // reset fields
+  document.getElementById("cname").value = "";
+  document.getElementById("country").value = "";
+  document.getElementById("city").innerHTML = "<option value=''>Select City</option>";
+  document.getElementById("fee").value = "";
+}
+
+function displayCustomers(){
+  let table = document.getElementById("custTable");
+  table.innerHTML = "";
+
+  customers.forEach((c, index)=>{
+    let row = document.createElement("tr");
+    row.onmouseenter = ()=>row.style.background='#f0f8ff';
+    row.onmouseleave = ()=>row.style.background='white';
+
+    row.innerHTML = `
+      <td>${c.id}</td>
+      <td>${c.name}</td>
+      <td>${c.country}</td>
+      <td>${c.city}</td>
+      <td>$${c.fee}</td>
+      <td><button onclick="deleteCustomer(${index})">Dalete</button></td>
+    `;
+
+    table.appendChild(row);
+  });
+}
+
+function deleteCustomer(i){
+  customers.splice(i,1);
+  displayCustomers();
+}
+</script>
+
+</body>
+</html>
